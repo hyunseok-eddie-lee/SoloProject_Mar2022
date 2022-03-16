@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Every Closet Wardrobe Register Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="d-flex justify-content-between align-items-center mx-auto col-10 p-4">
+        <img src="C:\Users\K\Desktop\Coding_Dojo\Projects_Algorithms\Project\1_SoloProject\SoloProject_Mar2022\logo.PNG" alt="logo">
+    </nav>
+
+    <div class="d-flex justify-content-around p-4">
+        <form action="/register" method="post" class="col-4 p-4 bg-dark text-light">
+            <h2 class="text-primary">Register</h2>
+            {% with messages =get_flashed_messages(category_filter=['register']) %}
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <!-- <strong>Flash AHHHHHHH!!!!</strong> -->
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+            {% endwith %}
+            <div class="d-flex justify-content-around">
+                <div class="form-group">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" name="first_name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" name="last_name" class="form-control">
+                </div>
+            </div>
+            <div class="d-flex justify-content-around">
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" name="city" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" name="state" class="form-control">
+                </div>
+            </div>
+            
+            <!-- <div class="form-group">
+                <label for="gender">Gender:</label>
+                <div class="input-group-text bg-dark">
+                        <label for="0" class="text-warning">Male</label>
+                        <input type="radio" name="gender" value="0" class="form-control" >
+                    </div>
+                    <div class="input-group-text bg-dark">
+                        <label for="1" class="text-warning">Female</label>
+                        <input type="radio" name="gender" value="1" class="form-control">
+                    </div>
+            </div> -->
+
+
+            <div class="form-group col-6">
+                <label for="birth">Birthdate:</label>
+                <input type="date" name="birth" class="form-control">
+            </div>
+                
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select name="gender" class="form-select" arial-label="Default select example">
+                    <option selected></option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="confirm">Confirm Password:</label>
+                <input type="password" name="confirm" class="form-control">
+            </div>
+            <input type="submit" value="Register" class="btn btn-primary">
+        </form>
+
+        <form action="/login" method="post" class="col-4 p-4 bg-dark text-light">
+            <h2 class="text-success">Login</h2>
+            {% with messages = get_flashed_messages(category_filter=['login']) %}
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Flash AHHHHHHH!!!!</strong>
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="form-control">
+            </div>
+            <input type="submit" value="Login" class="btn btn-success">
+        </form>
+    </div>
+</body>
+</html>

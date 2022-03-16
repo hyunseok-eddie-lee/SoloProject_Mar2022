@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Every Closet Wardrobe</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="col-10 mx-auto">
+        <div class="d-flex justify-content-between align-items-center mx-auto p-4">
+            <div >
+                <img src="C:\Users\K\Desktop\Coding_Dojo\Projects_Algorithms\Project\1_SoloProject\SoloProject_Mar2022\logo.PNG" alt="logo">
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="/dashboard" class="btn btn-primary">My Items</a>
+                <a href="/logout" class="btn btn-info">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <form action="/create/item" method="post" class="col-7 p-4 my-4 bg-dark text-light mx-auto">
+        <h2 class="text-primary">Add a New Item</h2>
+        {% with messages = get_flashed_messages(category_filter=['item']) %}
+            {% if messages %}
+            <div class="alert alert-danger col-5" role="alert">
+                <!-- <strong>Flash AHHHHHHH!!!</strong> -->
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="col-6">
+
+            <div class="d-flex justify-content-between">
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select name="category" class="form-select" arial-label="Default select example">
+                        <option selected></option>
+                        <option value="clothing">Clothing</option>
+                        <option value="shoes">Shoes</option>
+                        <option value="accessory">Accessory</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sub_category">Sub Category:</label>
+                    <select name="sub_category" class="form-select" arial-label="Default select example">
+                        <option selected></option>
+                        <option value="clothing">Suiting</option>
+                        <option value="shoes">Shirts</option>
+                        <option value="accessory">Coats & Jackets</option>
+                        <option value="accessory">Sweatshirts & Hoodies</option>
+                        <option value="accessory">Polos</option>
+                        <option value="accessory">Jeans</option>
+                        <option value="accessory">Shorts</option>
+                        <option value="accessory">Pants</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="buying_date">Buying Date:</label>
+                <input type="date" name="buying_date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="item_image">Picture (optional):</label>
+
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description (optional):</label>
+                <textarea name="description" cols="30" rows="5" class="form-control"></textarea>
+            </div>
+            <br>
+            <input type="submit" value="Add" class="btn btn-primary">
+
+        </div>
+    </form>
+</body>
+</html>
