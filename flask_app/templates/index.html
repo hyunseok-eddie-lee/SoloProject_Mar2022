@@ -9,7 +9,11 @@
 </head>
 <body>
     <nav class="d-flex justify-content-between align-items-center mx-auto col-10 p-4">
-        <img src="C:\Users\K\Desktop\Coding_Dojo\Projects_Algorithms\Project\1_SoloProject\SoloProject_Mar2022\logo.PNG" alt="logo">
+        <div class="d-flex justify-content-btween align-items-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/48/48906.png" alt="logo1" width="50px" height="50px">
+            <h1 class="mx-3">Every Closet Wardrobe</h1>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnWL3_b3Xe2y7lizD6k4Ggo9Crc2rTG_dIAw&usqp=CAU" alt="logo" width="50px" height="50px">
+        </div>
     </nav>
 
     <div class="d-flex justify-content-around p-4">
@@ -69,8 +73,8 @@
                 <label for="gender">Gender:</label>
                 <select name="gender" class="form-select" arial-label="Default select example">
                     <option selected></option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                 </select>
             </div>
             
@@ -95,7 +99,7 @@
             {% with messages = get_flashed_messages(category_filter=['login']) %}
                 {% if messages %}
                 <div class="alert alert-danger" role="alert">
-                    <strong>Flash AHHHHHHH!!!!</strong>
+                    <!-- <strong>Flash AHHHHHHH!!!!</strong> -->
                         {% for message in messages %}
                         <p>{{message}}</p>
                         {% endfor %}

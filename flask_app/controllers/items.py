@@ -20,11 +20,15 @@ def create_item():
     if not Item.validate_item(request.form):
         return redirect('/new/item')
     data ={
-        "category": request.form["category"],
-        "description": request.form["description"],
-        "sub_category": request.form["sub_category"],
-        "item_image": int(request.form["item_image"]),
+        "clothing_top": request.form["clothing_top"],
+        "clothing_bottom": request.form["clothing_bottom"],
+        "underwear_swim": request.form["underwear_swim"],
+        "pajamas": request.form["pajamas"],
+        "shoes_socks": request.form["shoes_socks"],
+        "accessory": request.form["accessory"],
         "buying_date": request.form["buying_date"],
+        "item_image_url": request.form["item_image_url"],
+        "description": request.form["description"],
         "user_id": session["user_id"]
     }
     Item.save(data)
@@ -49,27 +53,31 @@ def update_item():
     if not Item.validate_item(request.form):
         return redirect('/new/item')
     data ={
-        "category": request.form["category"],
-        "description": request.form["description"],
-        "sub_category": request.form["sub_category"],
-        "item_image": int(request.form["item_image"]),
+        "clothing_top": request.form["clothing_top"],
+        "clothing_bottom": request.form["clothing_bottom"],
+        "underwear_swim": request.form["underwear_swim"],
+        "pajamas": request.form["pajamas"],
+        "shoes_socks": request.form["shoes_socks"],
+        "accessory": request.form["accessory"],
         "buying_date": request.form["buying_date"],
+        "item_image_url": request.form["item_image_url"],
+        "description": request.form["description"],
         "id": request.form["id"]
     }
     Item.update(data)
     return redirect('/dashboard')
 
-@app.route('/item/<int:id>')
-def show_item(id):
-    if 'user_id' not in session:
-        return redirect('/logout')
-    data ={
-        "id": id
-    }
-    user_data ={
-        "id": session['user_id']
-    }
-    return render_template("show_item.html", item=Item.get_one(data), user=User.get_by_id(user_data))
+# @app.route('/item/<int:id>')
+# def show_item(id):
+#     if 'user_id' not in session:
+#         return redirect('/logout')
+#     data ={
+#         "id": id
+#     }
+#     user_data ={
+#         "id": session['user_id']
+#     }
+#     return render_template("show_item.html", item=Item.get_one(data), user=User.get_by_id(user_data))
 
 @app.route('/destroy/item/<int:id>')
 def destroy_item(id):

@@ -55,3 +55,35 @@ def dashboard():
 def logout():
     session.clear()
     return redirect('/')
+
+
+
+@app.route('/edit/account/<int:id>')
+def edit_account(id):
+    if 'user_id' not in session:
+        return redirect('/logout')
+    data ={
+        "id": id
+    }
+    user_data ={
+        "id": session['user_id']
+    }
+    return render_template("edit_account.html", edit=User.get_one(data), user=User.get_by_id(user_data))
+
+@app.route('/update/account', methods=['POST'])
+def update_account():
+    if 'user_id' not in session:
+        return redirect('/logout')
+    if not User.validate_update(request.form):
+        return redirect('/dashboard')
+    data ={
+        "first_name": request.form['first_name'],
+        "last_name": request.form['last_name'],
+        "gender": request.form['gender'],
+        "birth" : request.form['birth'],
+        "city" : request.form['city'],
+        "state" : request.form['state'],
+        "id": request.form["id"]
+    }
+    User.update(data)
+    return redirect('/dashboard')

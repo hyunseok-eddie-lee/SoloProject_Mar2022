@@ -10,31 +10,245 @@
 <body>
     <nav class="col-10 mx-auto">
         <div class="d-flex justify-content-between align-items-center mx-auto p-4">
-            <div >
-                <img src="C:\Users\K\Desktop\Coding_Dojo\Projects_Algorithms\Project\1_SoloProject\SoloProject_Mar2022\logo.PNG" alt="logo">
+            <div class="d-flex justify-content-btween align-items-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/48/48906.png" alt="logo1" width="50px" height="50px">
+                <h1 class="mx-3">Every Closet Wardrobe</h1>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnWL3_b3Xe2y7lizD6k4Ggo9Crc2rTG_dIAw&usqp=CAU" alt="logo" width="50px" height="50px">
             </div>
             <div class="d-flex justify-content-end align-items-center">
-                <h1 class="p-3">{{user.first_name}}</h1>
+                <h3 class="p-3">Welcome, {{user.first_name}} {{user.last_name}} </h3>
                 <a href="/logout" class="btn btn-info">Logout</a>
             </div>
         </div>
-        <div class="d-flex flex-row bd-highlight mb-3 align-items-center mx-auto">
-            <a href="/dashboard" class="p-4 bd-highlight">My Items</a>
-            <a href="/new/item" class="p-4 bd-highlight">Add Items</a>
-            <a href="" class="p-4 bd-highlight">Edit My Account</a>
+        <div class="d-flex flex-row bd-highlight mb-3 align-items-center mx-auto border">
+            <a href="/dashboard" class="p-4 bd-highlight text-dark font-weight-bold">My Items</a>
+            <a href="/new/item" class="p-4 bd-highlight text-dark font-weight-bold">Add Items</a>
+            <a href="/edit/account/{{user.id}}" class="p-4 bd-highlight text-dark font-weight-bold">Edit My Account</a>
         </div>
     </nav>
+    <br>
 
-    <div class="col-8 mx-auto">
-        <div class="form-group">
-            <h3>Clothing</h3>
-        </div>
-        <div class="form-group">
-            <h3>Shoes</h3>
-        </div>
-        <div class="form-group">
-            <h3>Accessories & Watches</h3>
-        </div>
+    <div class="col-9 mx-auto">
+    
+        <table class="table table-hover border border-2 rounded border-dark">
+            <h2 class="text-center">Clothing Top</h2>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Buying Date</th>
+                    <th>Item Image</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                {% if item.clothing_top != "" %}
+                {% if item.user_id == session.user_id %}
+                    <tr>
+                        <td>{{item.clothing_top}}</td>
+                        <td>{{item.buying_date.strftime('%Y-%m-%d')}}</td>
+                        <td><img src="{{item.item_image_url}}" alt="item_image" width="200px"></td>
+                        <td>{{item.description}}</td>
+                        <td>
+                            {% if item.user_id == session.user_id %}
+                            <a href="/new/item">Add</a>
+                            <a href="/edit/item/{{item.id}}" class="mx-1">Edit</a>
+                            <a href="/destroy/item/{{item.id}}"">Delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+
+        <table class="table table-hover border border-2 rounded border-dark">
+            <h2 class="text-center border-top pt-5">Clothing Bottom</h2>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Buying Date</th>
+                    <th>Item Image</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                {% if item.clothing_bottom != "" %}
+                {% if item.user_id == session.user_id %}
+                    <tr>
+                        <td>{{item.clothing_bottom}}</td>
+                        <td>{{item.buying_date.strftime('%Y-%m-%d')}}</td>
+                        <td><img src="{{item.item_image_url}}" alt="item_image" width="200px"></td>
+                        <td>{{item.description}}</td>
+                        <td>
+                            {% if item.user_id == session.user_id %}
+                            <a href="/new/item">Add</a>
+                            <a href="/edit/item/{{item.id}}" class="mx-1">Edit</a>
+                            <a href="/destroy/item/{{item.id}}">Delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+
+        <table class="table table-hover border border-2 rounded border-dark">
+            <h2 class="text-center border-top pt-5">Underwear & Swim</h2>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Buying Date</th>
+                    <th>Item Image</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                {% if item.underwear_swim != "" %}
+                {% if item.user_id == session.user_id %}
+                    <tr>
+                        <td>{{item.underwear_swim}}</td>
+                        <td>{{item.buying_date.strftime('%Y-%m-%d')}}</td>
+                        <td><img src="{{item.item_image_url}}" alt="item_image" width="200px"></td>
+                        <td>{{item.description}}</td>
+                        <td>
+                            {% if item.user_id == session.user_id %}
+                            <a href="/new/item">Add</a>
+                            <a href="/edit/item/{{item.id}}" class="mx-1">Edit</a>
+                            <a href="/destroy/item/{{item.id}}">Delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+
+        <table class="table table-hover border border-2 rounded border-dark">
+            <h2 class="text-center border-top pt-5">Pajamas</h2>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Buying Date</th>
+                    <th>Item Image</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                {% if item.pajamas != "" %}
+                {% if item.user_id == session.user_id %}
+                    <tr>
+                        <td>{{item.pajamas}}</td>
+                        <td>{{item.buying_date.strftime('%Y-%m-%d')}}</td>
+                        <td><img src="{{item.item_image_url}}" alt="item_image" width="200px"></td>
+                        <td>{{item.description}}</td>
+                        <td>
+                            {% if item.user_id == session.user_id %}
+                            <a href="/new/item">Add</a>
+                            <a href="/edit/item/{{item.id}}" class="mx-1">Edit</a>
+                            <a href="/destroy/item/{{item.id}}">Delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+
+        <table class="table table-hover border border-2 rounded border-dark">
+            <h2 class="text-center border-top pt-5">Shoes & Socks</h2>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Buying Date</th>
+                    <th>Item Image</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                {% if item.shoes_socks != "" %}
+                {% if item.user_id == session.user_id %}
+                    <tr>
+                        <td>{{item.shoes_socks}}</td>
+                        <td>{{item.buying_date.strftime('%Y-%m-%d')}}</td>
+                        <td><img src="{{item.item_image_url}}" alt="item_image" width="200px"></td>
+                        <td>{{item.description}}</td>
+                        <td>
+                            {% if item.user_id == session.user_id %}
+                            <a href="/new/item">Add</a>
+                            <a href="/edit/item/{{item.id}}" class="mx-1">Edit</a>
+                            <a href="/destroy/item/{{item.id}}">Delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+
+        <table class="table table-hover border border-2 rounded border-dark mb-5">
+            <h2 class="text-center border-top pt-5">Accessories</h2>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Buying Date</th>
+                    <th>Item Image</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                {% if item.accessory != "" %}
+                {% if item.user_id == session.user_id %}
+                    <tr>
+                        <td>{{item.accessory}}</td>
+                        <td>{{item.buying_date.strftime('%Y-%m-%d')}}</td>
+                        <td><img src="{{item.item_image_url}}" alt="item_image" width="200px"></td>
+                        <td>{{item.description}}</td>
+                        <td>
+                            {% if item.user_id == session.user_id %}
+                            <a href="/new/item">Add</a>
+                            <a href="/edit/item/{{item.id}}" class="mx-1">Edit</a>
+                            <a href="/destroy/item/{{item.id}}">Delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+
+
+
+
     </div>
 </body>
 </html>

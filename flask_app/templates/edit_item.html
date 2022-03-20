@@ -10,17 +10,19 @@
 <body>
     <nav class="col-10 mx-auto">
         <div class="d-flex justify-content-between align-items-center mx-auto p-4">
-            <div >
-                <img src="C:\Users\K\Desktop\Coding_Dojo\Projects_Algorithms\Project\1_SoloProject\SoloProject_Mar2022\logo.PNG" alt="logo">
+            <div class="d-flex justify-content-btween align-items-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/48/48906.png" alt="logo1" width="50px" height="50px">
+                <h1 class="mx-3">Every Closet Wardrobe</h1>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnWL3_b3Xe2y7lizD6k4Ggo9Crc2rTG_dIAw&usqp=CAU" alt="logo" width="50px" height="50px">
             </div>
             <div class="d-flex justify-content-between align-items-center">
-                <a href="/dashboard" class="btn btn-primary">My Items</a>
+                <a href="/dashboard" class="btn btn-primary mx-3">My Items</a>
                 <a href="/logout" class="btn btn-info">Logout</a>
             </div>
         </div>
     </nav>
 
-    <form action="/create/item" method="post" class="col-7 p-4 my-4 bg-dark text-light mx-auto">
+    <form action="/update/item" method="post" class="col-7 p-4 my-4 bg-dark text-light mx-auto">
         <h2 class="text-primary">Edit Item</h2>
         {% with messages = get_flashed_messages(category_filter=['item']) %}
             {% if messages %}
@@ -35,29 +37,76 @@
 
         <div class="col-6">
             <input type="hidden" name="id" value="{{edit.id}}">
+            <label for="category">Category</label>
 
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-around">
                 <div class="form-group">
-                    <label for="category">Category:</label>
-                    <select name="category" class="form-select" arial-label="Default select example">
-                        <option selected value="{{edit.category}}">{{edit.category}}</option>
-                        <option value="clothing">Clothing</option>
-                        <option value="shoes">Shoes</option>
-                        <option value="accessory">Accessory</option>
+                    <label for="clothing_top">Clothing Top:</label>
+                    <select name="clothing_top" class="form-select" arial-label="Default select example">
+                        <option selected value="{{edit.clothing_top}}">{{edit.clothing_top}}</option>
+                        <option value="Shirt">Shirt</option>
+                        <option value="T Shirt">T shirt</option>
+                        <option value="Polo">Polo</option>
+                        <option value="Blazer">Blazer</option>
+                        <option value="Coat">Coat</option>
+                        <option value="Jacket">Jacket</option>
+                        <option value="Hoody">Hoody</option>
+                        <option value="Sweatshirt">Sweatshirt</option>
+                        <option value="Sweater">Sweater</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="sub_category">Sub Category:</label>
-                    <select name="sub_category" class="form-select" arial-label="Default select example">
-                        <option selected value="{{edit.sub_category}}">{{edit.sub_category}}</option>
-                        <option value="clothing">Suiting</option>
-                        <option value="shoes">Shirts</option>
-                        <option value="accessory">Coats & Jackets</option>
-                        <option value="accessory">Sweatshirts & Hoodies</option>
-                        <option value="accessory">Polos</option>
-                        <option value="accessory">Jeans</option>
-                        <option value="accessory">Shorts</option>
-                        <option value="accessory">Pants</option>
+                    <label for="clothing_bottom">Clothing Bottom:</label>
+                    <select name="clothing_bottom" class="form-select" arial-label="Default select example">
+                        <option selected value="{{edit.clothing_bottom}}">{{edit.clothing_bottom}}</option>
+                        <option value="Pants">Pants</option>
+                        <option value="Jean">Jean</option>
+                        <option value="Shorts">Shorts</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-around">
+                <div class="form-group">
+                    <label for="underwear_swim">Underwear & Swim:</label>
+                    <select name="underwear_swim" class="form-select" arial-label="Default select example">
+                        <option selected value="{{edit.underwear_swim}}">{{edit.underwear_swim}}</option>
+                        <option value="Underwear">Underwear</option>
+                        <option value="Swim">Swim</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pajamas">Pajamas:</label>
+                    <select name="pajamas" class="form-select" arial-label="Default select example">
+                        <option selected value="{{edit.pajamas}}">{{edit.pajamas}}</option>
+                        <option value="Pajama Top">Pajama Top</option>
+                        <option value="Pajama Pants">Pajama Pants</option>
+                        <option value="Pajamas">Pajamas</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-around">
+                <div class="form-group">
+                    <label for="shoes_socks">Shoes & Socks:</label>
+                    <select name="shoes_socks" class="form-select" arial-label="Default select example">
+                        <option selected value="{{edit.shoes_socks}}">{{edit.shoes_socks}}</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Socks">Socks</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="accessory">Accessory:</label>
+                    <select name="accessory" class="form-select" arial-label="Default select example">
+                        <option selected value="{{edit.accessory}}">{{edit.accessory}}</option>
+                        <option value="Watch">Watch</option>
+                        <option value="Belt">Belt</option>
+                        <option value="Glasses">Glasses</option>
+                        <option value="Sunglasses">Sunglasses</option>
+                        <option value="Bag">Bag</option>
+                        <option value="Glove">Glove</option>
+                        <option value="Tie">Tie</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
             </div>
@@ -68,7 +117,9 @@
             </div>
             <div class="form-group">
                 <label for="item_image">Picture (optional):</label>
-
+                <img src="{{edit.item_image_url}}" class="rounded mx-auto d-block" alt="item_image">
+                <label for="item_image_url">Image URL Address:</label>
+                <input type="text" name="item_image_url" class="form-control" value="{{edit.item_image_url}}">
             </div>
 
             <div class="form-group">
